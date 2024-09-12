@@ -1,16 +1,17 @@
 process.on('uncaughtException', (err)=>{
     console.log('error in code',err);
 })
-
 import express from 'express'
 import {dbConnection} from "./dataBase/dbConnection.js"
-import { fileUploading } from './modules/uploads/upload.File.js'
 import { appError } from './middleWare/handleErrors/appError.js'
 import { globalError } from './middleWare/handleErrors/globalError.js'
 import userRoutes from './modules/users/user.routes.js'
 import companyRoutes from "./modules/companies/copmany.routes.js"
 import jobRouter from './modules/jobs/job.routes.js';
-import applicationsRoutes from './modules/applications/application.routes.js';
+
+// import dotenv from "dotenv"
+// dotenv.config()
+import "dotenv/config"
 
 const app = express()
 const port = 3000
@@ -19,7 +20,7 @@ app.use(express.json())
 app.use('/users',userRoutes)
 app.use('/companies',companyRoutes)
 app.use('/jobs',jobRouter)
-app.use('/applications',applicationsRoutes)
+
 
 app.use('/uploads',express.static('uploads'))
 

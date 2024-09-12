@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 
 
 
@@ -33,8 +33,29 @@ const jobSchema = new Schema({
         type:String,
     }],
     addedBy:{
-        type:Schema.Types.ObjectId,
+        type:Types.ObjectId,
         ref:'User'
+    },
+    userResume:String,
+    avgRate: {
+        type: Number,
+        default: 0,
+    },
+    rateNo: {
+        type: Number,
+        default: 0,
+    },
+    likes: [{
+        type: Types.ObjectId,
+        ref: "User",
+    }],
+    reviewer: [{
+        type: Types.ObjectId,
+        ref: "User",
+    }],
+    likesNo: {
+        type: Number,
+        default: 0,
     }
 
 })
